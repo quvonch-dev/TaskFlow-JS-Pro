@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow JS Pro</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <span class="brand-icon">✓</span>
+        <div>
+          <h1>TaskFlow</h1>
+          <p>JS Pro Dashboard</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+        <button class="nav-btn" data-view="tasks">Tasks</button>
+        <button class="nav-btn" data-view="analytics">Analytics</button>
+        <button class="nav-btn" data-view="about">About</button>
+      </nav>
+
+      <div class="sidebar-card">
+        <p class="small-title">Bugungi fokus</p>
+        <h3 id="focusText">3 ta muhim vazifa</h3>
+        <p>Loyihangni reja bilan boshqar.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="hello">Assalomu alaykum 👋</p>
+          <h2 id="pageTitle">Dashboard</h2>
+        </div>
+
+        <div class="top-actions">
+          <button class="theme-btn" id="themeBtn">🌙</button>
+          <button class="primary-btn" id="openModalBtn">+ New Task</button>
+        </div>
+      </header>
+
+      <section class="stats-grid" id="statsGrid"></section>
+
+      <section class="toolbar">
+        <div class="search-box">
+          <span>🔍</span>
+          <input type="text" id="searchInput" placeholder="Vazifa qidirish..." />
+        </div>
+
+        <select id="filterStatus">
+          <option value="all">Barchasi</option>
+          <option value="todo">Todo</option>
+          <option value="progress">Progress</option>
+          <option value="done">Done</option>
+        </select>
+
+        <select id="sortTasks">
+          <option value="newest">Yangi birinchi</option>
+          <option value="oldest">Eski birinchi</option>
+          <option value="priority">Priority bo‘yicha</option>
+        </select>
+      </section>
+
+      <section class="content-grid">
+        <div class="panel tasks-panel">
+          <div class="panel-header">
+            <h3>Vazifalar</h3>
+            <p id="taskCountText">0 ta vazifa</p>
+          </div>
+
+          <div class="task-list" id="taskList"></div>
+        </div>
+
+        <div class="panel side-panel">
+          <div class="panel-header">
+            <h3>Progress</h3>
+            <p id="percentText">0%</p>
+          </div>
+
+          <div class="circle-progress">
+            <div class="circle" id="circleProgress">
+              <span id="circleValue">0%</span>
+            </div>
+          </div>
+
+          <div class="mini-chart" id="miniChart"></div>
+
+          <div class="tips">
+            <h4>JS funksiyalar</h4>
+            <ul>
+              <li>CRUD: qo‘shish, o‘chirish, edit</li>
+              <li>localStorage saqlash</li>
+              <li>Filter, search, sort</li>
+              <li>Dark / Light mode</li>
+              <li>Dynamic statistics</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <form class="task-modal" id="taskForm">
+      <div class="modal-header">
+        <h3 id="modalTitle">Yangi vazifa</h3>
+        <button type="button" id="closeModalBtn">×</button>
+      </div>
+
+      <input type="hidden" id="taskId" />
+
+      <label>
+        Vazifa nomi
+        <input type="text" id="taskTitle" placeholder="Masalan: GitHubga loyiha joylash" required />
+      </label>
+
+      <label>
+        Tavsif
+        <textarea id="taskDescription" placeholder="Vazifa haqida qisqacha yozing..."></textarea>
+      </label>
+
+      <div class="form-row">
+        <label>
+          Status
+          <select id="taskStatus">
+            <option value="todo">Todo</option>
+            <option value="progress">Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </label>
+
+        <label>
+          Priority
+          <select id="taskPriority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+      </div>
+
+      <label>
+        Deadline
+        <input type="date" id="taskDeadline" />
+      </label>
+
+      <button class="primary-btn full-btn" type="submit">Saqlash</button>
+    </form>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
